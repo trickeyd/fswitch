@@ -1,6 +1,6 @@
 {
   "name": "@idiosync/fswitch",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A functional switch statement with familiar syntax",
   "main": "index.js",
   "scripts": {
@@ -14,6 +14,10 @@
     "conditional",
     "react-saga"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trickeyd/fswitch.git"
+  },
   "author": "James Trickey",
   "license": "ISC",
   "devDependencies": {
