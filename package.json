@@ -1,0 +1,25 @@
+{
+  "name": "fswitch",
+  "version": "1.0.0",
+  "description": "A functional switch statement with familiar syntax",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "functional",
+    "fswitch",
+    "switch",
+    "statement"
+  ],
+  "author": "James Trickey",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.10.1",
+    "@babel/preset-env": "^7.10.1",
+    "babel-jest": "^26.0.1",
+    "eslint": "^7.1.0",
+    "eslint-plugin-jest": "^23.13.2",
+    "jest": "^26.0.1"
+  }
+}
