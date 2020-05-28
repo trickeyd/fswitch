@@ -5,6 +5,20 @@
 Initially created for handling server statuses in a nice readable way, it generalises as a system for
 implementing complex conditional code in a easy-to-read and self-documenting manner. 
 
+## Installation
+
+yarn:
+```bash
+$ yarn add @idiosync/fswitch
+```
+
+npm:
+```bash
+$ npm i @idiosync/fswitch
+```
+
+ 
+
 ### Basic use
 The fSwich function accepts an input followed by a series of conditional functions and callbacks. Like a switch statement the first 
 passing case terminates the process. Finally, a default callback can be passed.
