@@ -28,7 +28,7 @@ $ npm i @idiosync/fswitch
 
  
 
-### Basic use
+## Basic use
 The fSwich function accepts an input followed by a series of conditional functions and callbacks. Like a switch statement the first 
 passing case terminates the process. Finally, a default callback can be passed.
 
@@ -66,7 +66,7 @@ await fSwitch(input,
 )
 ```
 
-### Server status codes
+## Server status codes
 fSwitch was initially created for dealing with server status codes in
 redux-saga, so I will use that as an example.
 
@@ -92,7 +92,7 @@ function* fetchUserInfoSaga() {
 }
 ```
 
-If you need a more complex callback you can return a generator or another saga
+If you need a more complex callback you can return a generator or another saga.
 This allows you to effectively yield from the callback
 
 ```js
