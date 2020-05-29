@@ -6,7 +6,7 @@ Initially created for handling server statuses in a nice readable way, it genera
 implementing complex conditional code in a easy-to-read and self-documenting manner. 
 
 ```js
-// use with react-saga
+// use with redux-saga
 yield fSwitch(res.status,
   [SUCCESS, () => put(successAction)],
   [FAIL, () => put(failAction)],
@@ -68,7 +68,7 @@ await fSwitch(input,
 
 ### Server status codes
 fSwitch was initially created for dealing with server status codes in
-react-saga, so I will use that as an example.
+redux-saga, so I will use that as an example.
 
 All common server codes are supported and listed here: [responses]. 
 
