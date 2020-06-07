@@ -1,6 +1,6 @@
 {
   "name": "@idiosync/fswitch",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "A functional switch statement with familiar syntax",
   "main": "dist/index.js",
   "scripts": {
