@@ -74,7 +74,7 @@ All common server codes are supported and listed here: [responses].
 
 ```js
 // import some error cases
-import { SUCCESS, FAIL } from '@idiosync/fswitch/cases/responses'
+import { SUCCESS, FAIL } from '@idiosync/fswitch'
 
 // create our own conditional if we needed
 // (although 404 and all other common codes are actually in above file too)
@@ -96,8 +96,7 @@ If you need a more complex callback you can return a generator or another saga.
 This allows you to effectively yield from the callback
 
 ```js
-import { fSwitch } from "fswitch"
-import { SUCCESS } from "@idiosync/fswitch/cases/responses"; 
+import { fSwitch, SUCCESS } from "fswitch"
 import { put, call } from "redux-saga/effects";
  
 function* fetchUserInfoSaga() {
@@ -120,6 +119,18 @@ function* fetchUserInfoSaga() {
     () => put(failAction)
   )
 }
+```
+
+Remember that once a case passes the later ones are not called, so if you want to use SUCCESS or FAIL conditions
+then you will have to handle individaul calls first.
+
+```js
+
+fSwitch(res.status, 
+  [ SUCCESS, handleSuccess ],
+  [ s200, handle200 ]         // <--- this line will never be reached
+) 
+
 ```
 
 
