@@ -1,6 +1,6 @@
 [![NPM Version][npm-image]][npm-url]
 # fSwitch
-<h3>A functional switch statement - by  [<img width="100px" height="31px" valign="middle" src="https://storage.googleapis.com/idiosync-web-images/telescope/idiosync_very_small.png" />](https://www.npmjs.com/~idiosync )</h3>
+<h3>A functional switch statement - by  [<img width="100px" height="31px" valign="middle" src="https://storage.googleapis.com/idiosync-web-images/telescope/idiosync_very_small.png">](https://www.npmjs.com/~idiosync )</h3>
 
 Initially created for handling server statuses in a nice readable way, it generalises as a system for
 implementing complex conditional code in a easy-to-read and self-documenting manner. 
@@ -134,7 +134,7 @@ fSwitch(res.status,
 ```
 
 ## Try/Catch
-For the sake of pretty syntax I have added an otional try/catch wrapper. If you use this you 
+For the sake of pretty syntax I have added an optional try/catch wrapper. If you use this you 
 MUST use the catch function returned by try or fSwitch will never be called
 ```js
   yield fSwitch.try(res.status,
