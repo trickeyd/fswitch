@@ -110,4 +110,73 @@ describe("fSwitch", () => {
       expect(defaultCallback).toBeCalledTimes(1)
     })
   })
+
+  describe("fSwitch.try", () => {
+    let onError
+
+    beforeEach(() => {
+      onError = jest.fn()
+    })
+
+    it("should call all failing cases until passing case is called", () => {
+      fSwitch
+        .try(
+          input,
+          fCase(failingCase, failingCallback),
+          fCase(failingCase, failingCallback),
+          fCase(passingCase, passingCallback)
+        )
+        .catch(onError)
+
+      expect(failingCase).toHaveBeenCalledTimes(2)
+      expect(passingCase).toHaveBeenCalledTimes(1)
+      expect(onError).toHaveBeenCalledTimes(0)
+    })
+
+    it("should call no cases once one has passed", () => {
+      fSwitch
+        .try(
+          input,
+          fCase(passingCase, passingCallback),
+          fCase(failingCase, failingCallback)
+        )
+        .catch(onError)
+
+      expect(passingCase).toHaveBeenCalledTimes(1)
+      expect(failingCase).toHaveBeenCalledTimes(0)
+      expect(onError).toHaveBeenCalledTimes(0)
+    })
+
+    it("should only call the callback of passing case", () => {
+      fSwitch
+        .try(
+          input,
+          fCase(failingCase, failingCallback),
+          fCase(failingCase, failingCallback),
+          fCase(passingCase, passingCallback),
+          fCase(failingCase, failingCallback)
+        )
+        .catch(onError)
+      expect(failingCallback).toHaveBeenCalledTimes(0)
+      expect(passingCase).toHaveBeenCalledTimes(1)
+      expect(onError).toHaveBeenCalledTimes(0)
+    })
+
+    describe("when there is an error", () => {
+      it("shoule call the error handler", () => {
+        const error = new Error("this is an error!!!!")
+        fSwitch
+          .try(
+            input,
+            fCase(failingCase, failingCallback),
+            fCase(passingCase, () => {
+              throw error
+            })
+          )
+          .catch(onError)
+
+        expect(onError).toHaveBeenCalledWith(error)
+      })
+    })
+  })
 })

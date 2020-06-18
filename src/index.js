@@ -15,6 +15,18 @@ export const fSwitch = (input, ...cases) => {
   }
 }
 
+fSwitch.try = (input, ...cases) => {
+  return {
+    catch: (onError) => {
+      try {
+        return fSwitch(input, ...cases)
+      } catch (error) {
+        onError(error)
+      }
+    },
+  }
+}
+
 export const fCase = (condition, callback) => [condition, callback]
 export const fDefault = callback => callback
 

@@ -60,6 +60,22 @@ var fSwitch = function fSwitch(input) {
 
 exports.fSwitch = fSwitch;
 
+fSwitch.try = function (input) {
+  for (var _len = arguments.length, cases = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    cases[_key - 1] = arguments[_key];
+  }
+
+  return {
+    catch: function _catch(onError) {
+      try {
+        return fSwitch.apply(void 0, [input].concat(cases));
+      } catch (error) {
+        onError(error);
+      }
+    }
+  };
+};
+
 var fCase = function fCase(condition, callback) {
   return [condition, callback];
 };
