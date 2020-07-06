@@ -148,4 +148,4 @@ MUST use the catch function returned by try or fSwitch will never be called
 
 [npm-image]: https://img.shields.io/npm/v/@idiosync/fswitch
 [npm-url]: https://www.npmjs.com/package/@idiosync/fswitch
-[responses]: https://github.com/trickeyd/fswitch/blob/master/cases/responses.js 
+[responses]: https://github.com/trickeyd/fswitch/blob/master/src/cases/responses.js
