@@ -133,6 +133,16 @@ fSwitch(res.status,
 
 ```
 
+## Combiners
+These are functions that combine multiple conditions with and / or logic.
+```js
+ fSwitch(status,
+  [or(s200, s202), handleSuccess],
+  [and(isMoreThan202, isLessThan300), handleSuccessDifferently],
+  [FAIL, handleFail]
+ )
+```
+
 ## Try/Catch
 For the sake of pretty syntax I have added an optional try/catch wrapper. If you use this you 
 MUST use the catch function returned by try or fSwitch will never be called
