@@ -1,7 +1,8 @@
-import { fSwitch, fCase, fDefault } from "./index"
-import { SUCCESS, FAIL } from "./cases/responses"
+import { fSwitch, fCase, fDefault, SUCCESS, FAIL, and, or } from "./index"
 
 describe("fSwitch", () => {
+  const error = new Error("this is an error!!!!")
+
   const input = 20
   const output = 20
   let passingCase
@@ -164,7 +165,6 @@ describe("fSwitch", () => {
 
     describe("when there is an error", () => {
       it("shoule call the error handler", () => {
-        const error = new Error("this is an error!!!!")
         fSwitch
           .try(
             input,
@@ -176,6 +176,54 @@ describe("fSwitch", () => {
           .catch(onError)
 
         expect(onError).toHaveBeenCalledWith(error)
+      })
+    })
+  })
+
+  describe("when using combiners", () => {
+    describe("when using 'and'", () => {
+      it("should pass if every condition passes", () => {
+        fSwitch(
+          input,
+          fCase(and(passingCase, passingCase, passingCase), passingCallback),
+          fCase(passingCase, () => {
+            throw error
+          })
+        )
+        expect(passingCase).toHaveBeenCalled()
+      })
+
+      it("should fail if any condidtion fails", () => {
+        fSwitch(
+          input,
+          fCase(and(passingCase, failingCase, passingCase), passingCallback),
+          fCase(passingCase, failingCallback)
+        )
+        expect(passingCallback).not.toHaveBeenCalled()
+        expect(failingCallback).toHaveBeenCalled()
+      })
+    })
+
+    describe("when using 'or'", () => {
+      it("should pass if any condition passes", () => {
+        fSwitch(
+          input,
+          fCase(or(failingCase, failingCase, passingCase), passingCallback),
+          fCase(passingCase, () => {
+            throw error
+          })
+        )
+        expect(passingCase).toHaveBeenCalled()
+      })
+
+      it("should fail if all conditions fail", () => {
+        fSwitch(
+          input,
+          fCase(or(failingCase, failingCase, failingCase), passingCallback),
+          fCase(passingCase, failingCallback)
+        )
+        expect(passingCallback).not.toHaveBeenCalled()
+        expect(failingCallback).toHaveBeenCalled()
       })
     })
   })

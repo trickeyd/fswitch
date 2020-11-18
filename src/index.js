@@ -31,3 +31,4 @@ export const fCase = (condition, callback) => [condition, callback]
 export const fDefault = callback => callback
 
 export * from "./cases/responses"
+export * from "./utils/combiners"
