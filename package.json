@@ -1,8 +1,9 @@
 {
   "name": "@idiosync/fswitch",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "A functional switch statement with familiar syntax",
   "main": "dist/index.js",
+  "typings": "src/index.d.ts",
   "scripts": {
     "test": "jest",
     "build": "babel src/ -d dist/ --ignore **/*.spec.js"
