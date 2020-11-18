@@ -27,7 +27,7 @@ fSwitch.try = (input, ...cases) => {
   }
 }
 
-export const fCase = (condition, callback) => [condition, callback]
+export const fCase = (conditional, callback) => [conditional, callback]
 export const fDefault = callback => callback
 
 export * from "./cases/responses"
